@@ -22,4 +22,12 @@ public class LancamentoAtividadeService {
 	public List<LancamentoAtividade> buscarTodos() {
 		return repository.findAll();
 	}
+	
+	public void salvarAtualizar(LancamentoAtividade lancamento) {
+		repository.save(lancamento);
+	}
+	
+	public void excluir(Long codigo) {
+		repository.deleteById(codigo);
+	}
 }

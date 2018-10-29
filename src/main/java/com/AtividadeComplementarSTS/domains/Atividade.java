@@ -1,18 +1,21 @@
-package com.AtividadeComplementarSTS.domains;
+	package com.AtividadeComplementarSTS.domains;
 
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Atividade implements Serializable {
 	private static final long serialVersionUID = 1L;
-
-	private String nome;
 	
 	@Id
-	private Integer codigo;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long codigo;
+
+	private String nome;
 	private Integer maximoAtividadesSemestre;
 	private Integer percentualCargaHoraria;
 	private Integer percentualPorAtividade;
@@ -20,7 +23,7 @@ public class Atividade implements Serializable {
 	public Atividade() {
 	}
 
-	public Atividade(String nome, Integer codigo, Integer maximoAtividadesSemestre, Integer percentualCargaHoraria,
+	public Atividade(String nome, Long codigo, Integer maximoAtividadesSemestre, Integer percentualCargaHoraria,
 			Integer percentualPorAtividade) {
 		super();
 		this.nome = nome;
@@ -34,8 +37,8 @@ public class Atividade implements Serializable {
 		return totalHorasComplementares * percentualPorAtividade / 100;
 	}
 	
-	public Integer getHorasAproveitadasPorAtividade(Integer totalHorasComplementares) {
-		return totalHorasComplementares * percentualPorAtividade / 100;
+	public Integer getHorasAproveitadasPorAtividade(Integer totalhorasComplementares) {
+		return getValorLimiteHorasAtividade(totalhorasComplementares) * percentualCargaHoraria / 100; 
 	}
 
 	public String getNome() {
@@ -46,11 +49,11 @@ public class Atividade implements Serializable {
 		this.nome = nome;
 	}
 
-	public Integer getCodigo() {
+	public Long getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(Integer codigo) {
+	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
 

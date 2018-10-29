@@ -37,4 +37,5 @@ private Atividade atividade;
 		Assert.assertEquals(quantidadeHoras,80);
 	}
 
+
 }

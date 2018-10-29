@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class LancamentoAtividade {
@@ -14,7 +15,11 @@ public class LancamentoAtividade {
 	private Integer quantidadeHoras;
 	private Date dataInicio;
 	private Date dataFim;
+	
+	@ManyToOne
 	private Aluno aluno;
+	
+	@ManyToOne
 	private Atividade atividade;
 	
 	public LancamentoAtividade() {
@@ -44,7 +49,10 @@ public class LancamentoAtividade {
 			return ano + "-1";
 		}
 	}
-
+	
+    /*public Integer getHorasAproveitadas() {
+    }
+*/
 	public Long getCodigo() {
 		return codigo;
 	}
@@ -92,5 +100,4 @@ public class LancamentoAtividade {
 	public void setAtividade(Atividade atividade) {
 		this.atividade = atividade;
 	}
-	
 }

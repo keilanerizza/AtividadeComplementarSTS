@@ -23,6 +23,14 @@ public class AtividadeService {
 		return repository.findById(codigo);
 	}
 	
+	public void salvarAtualizar(Atividade atividade) {
+		repository.save(atividade);
+	}
+	
+	public void excluir(Long codigo) {
+		repository.deleteById(codigo);
+	}
+	
 	public List<Atividade> buscarTodos() {
 		return repository.findAll();
 	}
